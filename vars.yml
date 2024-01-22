@@ -1,0 +1,9 @@
+---
+- name: Variables project
+  hosts: web
+  become: true
+  vars:
+   package: vim,yum-utils,wget,git
+  tasks:
+  - name: Install Package
+    yum: name={{ package }} state=latest
