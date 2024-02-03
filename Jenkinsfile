@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     parameters {
-        string(name: 'ARTIFACTORY_URL', defaultValue: 'http://3.86.56.150:8082/artifactory/ansible-code2', description: 'JFrog Artifactory URL')
+        string(name: 'ARTIFACTORY_URL', defaultValue: 'http://192.168.56.150:8082/artifactory/ansible-code2', description: 'JFrog Artifactory URL')
         string(name: 'ARTIFACTORY_CREDENTIALS', defaultValue: 'uadmin:cmVmdGtuOjAxOjE3Mzg0Nzc2Mjg6Mmo1T1M0TjdKZzBTblhYU3g1Skc3SlB0em10', description: 'JFrog Artifactory Credentials')
     }
 
@@ -14,7 +14,7 @@ pipeline {
                     sh 'zip -r ansible-code2.zip * -x Jenkinsfile'
                     
                     // Upload the zip file to JFrog Artifactory
-                    sh "curl -u${params.ARTIFACTORY_CREDENTIALS} -T ansible-code1.zip ${params.ARTIFACTORY_URL}"
+                    sh "curl -u${params.ARTIFACTORY_CREDENTIALS} -T ansible-code2.zip ${params.ARTIFACTORY_URL}"
                 }
             }
         }
